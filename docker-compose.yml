@@ -1,0 +1,65 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend-runtime
+    container_name: firewall-backend
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:///./firewall.db
+      MODEL_DIR: /app/model
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./firewall.db:/app/firewall.db
+      - ./model:/app/model:ro
+    gpus: all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend-runtime
+    container_name: firewall-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./model:/app/model:ro
+    restart: unless-stopped
+
+  # Optional single-container black-box mode running both backend and frontend
+  blackbox:
+    profiles: ["blackbox"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: all-in-one-runtime
+    container_name: firewall-blackbox
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:///./firewall.db
+      MODEL_DIR: /app/model
+    ports:
+      - "8000:8000"
+      - "8501:8501"
+    volumes:
+      - ./firewall.db:/app/firewall.db
+      - ./model:/app/model:ro
+    gpus: all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped

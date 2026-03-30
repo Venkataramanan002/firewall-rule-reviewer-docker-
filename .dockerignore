@@ -1,0 +1,27 @@
+# Git / VCS
+.git
+.gitignore
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node
+fortress-lens-main/node_modules/
+fortress-lens-main/dist/
+
+# IDE / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Runtime data not required in build context
+firewall.db
+
+# Large / optional local artifacts
+*.log
+*.tmp
