@@ -1,0 +1,33 @@
+# Python caches and virtual envs
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Environment and local settings
+.env
+.env.*
+.vscode/
+
+# Runtime artifacts
+*.log
+*.tmp
+*.sqlite
+*.db
+
+# Build outputs
+fortress-lens-main/node_modules/
+fortress-lens-main/dist/
+
+# Model and large local artifacts
+model/
+*.gguf
+content_ComplyGuard_7B_Q4.gguf
+complyguard.csv
+complyguard_ultra_complete.xml
+
+# OS artifacts
+.DS_Store
+Thumbs.db

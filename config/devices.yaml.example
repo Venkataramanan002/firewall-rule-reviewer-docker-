@@ -1,0 +1,14 @@
+devices:
+  - hostname: pa-fw-01
+    ip: 192.168.1.1
+    vendor: paloalto
+    snmp_community: public
+    api_enabled: true
+  - hostname: fortigate-01
+    ip: 192.168.1.2
+    vendor: fortinet
+    snmp_community: public
+  - hostname: asa-01
+    ip: 192.168.1.3
+    vendor: cisco
+    snmp_community: public

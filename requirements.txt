@@ -1,0 +1,33 @@
+# ── Core framework ─────────────────────────────────────────────────────────────
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+pydantic
+
+# ── Database ───────────────────────────────────────────────────────────────────
+sqlalchemy[asyncio]
+aiosqlite          # SQLite async driver — used by default (zero setup)
+asyncpg            # PostgreSQL async driver — only needed if DATABASE_URL=postgresql://...
+alembic
+
+# ── Data processing ────────────────────────────────────────────────────────────
+pandas
+openpyxl           # Excel file support
+pyyaml
+
+# ── Utilities ──────────────────────────────────────────────────────────────────
+requests
+aiohttp
+fpdf2                   # PDF report generation
+
+# ── Optional / advanced ────────────────────────────────────────────────────────
+# pysnmp             # SNMP polling (uncomment if using collectors)
+# redis              # Redis cache (uncomment if using Redis)
+# maxminddb-geolite2 # GeoIP (uncomment if using geo features)
+# user-agents        # User-agent parsing (uncomment if needed)
+# prometheus_client  # Metrics (uncomment if using Prometheus)
+
+# ── Testing ────────────────────────────────────────────────────────────────────
+pytest
+pytest-asyncio
